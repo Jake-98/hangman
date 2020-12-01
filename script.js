@@ -4,10 +4,10 @@ const playAgainBtn = document.getElementById("play-button");
 const popup = document.getElementById("popup-container");
 const notification = document.getElementById("notification-container");
 const finalMessage = document.getElementById("final-message");
+const correctWord = document.getElementById("correct-word");
 
 const figureParts = document.querySelectorAll(".figure-part");
 
-//add fetch api to word database
 const words = [
   "abruptly",
   "absurd",
@@ -157,6 +157,7 @@ function displayWord() {
 
   if (innerWord === selectedWord) {
     finalMessage.innerText = "YOU WON! ✅";
+    correctWord.innerText = "";
     popup.style.display = "flex";
   }
 }
@@ -182,7 +183,8 @@ function updateWrongLettersEl() {
 
   // Check if lost
   if (wrongLetters.length === figureParts.length) {
-    finalMessage.innerText = "YOU LOSE! ❌ ";
+    finalMessage.innerText = "YOU LOSE! ❌";
+    correctWord.innerHTML = `${selectedWord} was the correct word`;
     popup.style.display = "flex";
   }
 }
